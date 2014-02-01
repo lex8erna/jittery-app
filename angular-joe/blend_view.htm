@@ -3,7 +3,7 @@
   <head>
     <title>Jittery Joe's Test</title>
   </head>
-  <body>
+  <body  ng-controller="ReviewListCtrl">
   <div class="main-wrapper"><br>
 
   	<div class="container row">
@@ -20,48 +20,23 @@
   		</div>
   	</div>
   	<hr />
-  	 <div class="row">
-  		<div class="col-md-12" style="margin-bottom:30px">
-	  		<div class="col-md-1 pull-right">A</div>
-	  		<div class="col-md-1 pull-right">P</div>
-	  		<div class="col-md-1 pull-right">C</div>
-  		</div>
-  	</div>
-  	 <div class="row">
-  		<div class="col-md-12">
-	  		<div class="col-md-3">
+  	<!-- when $scope.myValue is truthy (element is hidden) -->
+    <div ng-show="detailMode" class="animate-hide">
+    	<span ng-click="toggleShow(false)">Click to go Back<br></span>
+    {{current}}
+    </div>
+     
+    <!-- when $scope.myValue is falsy (element is visible) -->
+    <div ng-hide="detailMode" class="animate-hide">
+	  	<div class="row">
+	  		<div class="col-md-12">
 	  			<ul>
-	  				<li>After Dinner</li>
-	  				<li>Bourque Newswatch</li>
-	  				<li>CN Tower Power</li>
-	  				<li>Connoisseur Estates</li>
+		            <li class="col-md-3" ng-repeat="blend in lexicalBlends">
+		                <span ng-click="toggleShow(blend.name)">{{blend.name}} ({{blend.average}})</span>
+		            </li>
 	  			</ul>
 	  		</div>
-	  		<div class="col-md-3">
-	  			<ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-	  		<div class="col-md-3">
-	  			 <ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-	  		<div class="col-md-3">
-	  			 <ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-  		</div>
+	  	</div>
   	</div>
 	<hr />
 <!--  	
@@ -81,7 +56,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300|Architects+Daughter' rel='stylesheet' type='text/css'>
 
     <!-- Custom JS -->
+    <script src="js/data.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/blends.js"></script>
 
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="style.css" />

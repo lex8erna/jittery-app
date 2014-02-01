@@ -1,8 +1,11 @@
 var jitteryApp = angular.module('jitteryApp', []);
 
-
+function setInnerHTML(eID, contents){
+    document.getElementById(eID).innerHTML = contents;
+}
 
 jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
+  $scope.detailMode = false;
   // Set our reviews object to be empty by default.
   $scope.reviews = [];
 
@@ -53,7 +56,6 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
         // Similarly, these two sorting options return a copy.
         $scope.popularBlends = blends.sortRating();
         $scope.lexicalBlends = blends.sortAlpha();
-
       //});
 // *******************************************************
 // *********** Yeah, it's right up there *****************
@@ -92,8 +94,47 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
       });
   }
 
+
+  $scope.addNewRatingFor = function (blendName) {
+    // Get the form data from the scope.
+    var review = $scope.review;
+
+    // Prepare the data.
+    var nodeData = {
+      'type': 'review',
+      'field_review_comment': {'und': [{'value': review.comment} ]},
+      'field_review_rating': {'und': [{'value': review.rating} ]},
+      'field_review_item': {'und': {'value': blendName}},
+      'field_origin_app': {'und': [{'value': 'U AND I'}]}
+    };
+
+    // POST the data and create a node.
+    $http({url: 'http://jitteryjoes.myplanetfellowship.com/api/node.json', method: 'POST', data: nodeData}).
+      success(function(data, status) {
+        // Setup data object.
+        var review = $scope.review;
+        // Add our app id and date in seconds.
+        review.app = 'U AND I';
+        var d = new Date();
+        review.node_created = (d.getTime() / 1000);
+
+        // Add the review to the reviews array.
+        $scope.reviews.unshift (review);
+
+        // Reset form vars.
+        $scope.review = {};
+      });
+  }
+
   // Set our "signupSent" flag to false by default.
   $scope.signupSent = false;
+  
+  $scope.current = "";
+
+  $scope.toggleShow = function (blend) {
+    $scope.detailMode = ! $scope.detailMode;
+    $scope.current = blend;
+  }
 
   // Add a newsletter signup.
   $scope.addNewSignup = function () {
