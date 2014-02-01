@@ -1,5 +1,7 @@
 var jitteryApp = angular.module('jitteryApp', []);
 
+
+
 jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
   // Set our reviews object to be empty by default.
   $scope.reviews = [];
@@ -23,9 +25,9 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
 // *******************************************************
       // The creation of the Blends object happens after successfully reading
       // both the JJ's reviews and the local JSON file
-      $http.get('js/blends.json').then(function(res){
+      //$http.get('js/blends.json').then(function(res){
         // Read blend descriptions and tags from blends.json
-        var desc = res.data;
+        //var desc = res.data;
 
         // Creating a Blends object
         blends = new Blends(data, desc);
@@ -52,7 +54,7 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
         $scope.popularBlends = blends.sortRating();
         $scope.lexicalBlends = blends.sortAlpha();
 
-      });
+      //});
 // *******************************************************
 // *********** Yeah, it's right up there *****************
 // *******************************************************
