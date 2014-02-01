@@ -45,48 +45,48 @@ var desc = {
         "tags": ["#bold"]
     },
     "House Blend":{
-        "description": "No description available.",
+        "description": "We've spent countless hours to capture the true essence Joe himself - jiiiiiiiittery. We've lightly roasted these beans to deliver an extra high dose of caffeine just the way Joe likes it.",
         "regions": ["Bolivia", "Rwanda", "El Salvador"],
-        "tags": []
+        "tags": ["#light"]
     },
     "Italian Roast":{
-        "description": "No description available.",
+        "description": "La dolce vita! We've pulled together the fine flavours from our finest Africa beans to deliver an exquisite bold coffee punch. We've roasted these beans to a bold perfection.",
         "regions": ["Ethiopian", "Kenyan", "Ghana"],
-        "tags": []
+        "tags": ["#bold"]
     },
     "Lionel Roastie":{
-        "description": "No description available.",
+        "description": "If you'll be staying up \"all night long\", this premium blend is \"just for you\"! One sip and you'll \"truly\" have an \"endless love\" for this blend.",
         "regions": ["Kona", "Indonesian", "Kenyan"],
-        "tags": []
+        "tags": ["#medium"]
     },
     "Mocca-Java":{
-        "description": "No description available.",
+        "description": "The Mocca-Java is a truly memorable experience. This fresh aroma will tickle your taste buds. Full bodied, low acidity and creamy finish.",
         "regions": ["Colombian", "Costa Rican", "Mexico"],
-        "tags": []
+        "tags": ["#medium"]
     },
     "Reggae Blend":{
-        "description": "No description available.",
+        "description": "We've pulled together the distinct flavours of the islands to perfect this magical blend.",
         "regions": ["Blue Mountain", "Cuban", "El Salvador"],
-        "tags": []
+        "tags": ["#bold"]
     },
     "Ruth Roast":{
-        "description": "No description available.",
+        "description": "A Myplanet favourite - our Ruth Roast is a bestseller in the Toronto tech community. A well balanced blend with a delightful chocolately finish. Perfect for those early morning whiskey hangovers.",
         "regions": ["Philippines", "Indonesia", "Vietnam"],
-        "tags": []
+        "tags": ["#bold"]
     },
     "Toronto Blend":{
-        "description": "No description available.",
+        "description": "We've really tried to capture the essence of this wonderful city. The Toronto Blend pulls together the best flavour combination of our Brazilian, Colombian, Indian and Vietnamese beans. The best Cup-O-Joe in Hogtown.",
         "regions": ["Brazilian", "Colombian", "India A", "Vietnamese"],
-        "tags": []
+        "tags": ["#light"]
     },
     "Tropic of Coffee":{
-        "description": "No description available.",
+        "description": "We've gathered the best flavour characteristics from the Tropic of Cancer. This bold aroma and smooth finish is bound to \"mulitply\" and \"grow on you\".",
         "regions": ["India A", "Mexico", "Kona"],
-        "tags": []
+        "tags": ["#bold"]
     },
     "World Tour Blend":{
-        "description": "No description available.",
+        "description": "A Jittery Joe favourite. This lovely medium blend of every bean will surely get you grooving in the morning.",
         "regions": ["EVERY BEAN (wat)"],
-        "tags": []
+        "tags": ["#medium"]
     }
 };
