@@ -132,12 +132,15 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
   $scope.current;
   $scope.currentView;
   $scope.blendOrder;
+  $scope.ratingArray;
 
   $scope.toggleShow = function (blend) {
     setInnerHTML('intro','');
     $scope.detailMode = ! $scope.detailMode;
     $scope.current = blend;
     $scope.currentBlend = blends.getBlend(blend);
+    $scope.ratingArray = [0, 1, 2, 3, 4].slice(0, Math.ceil($scope.currentBlend.average));
+    $scope.ratingOtherArray = [0, 1, 2, 3, 4].slice(0, 5 - Math.ceil($scope.currentBlend.average));
   }
 
   $scope.switchView = function (type) {

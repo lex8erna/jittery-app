@@ -36,7 +36,17 @@
 				</div>
 				<div class="col-md-6">
 					<div class="row">
-						Average User Rating: {{currentBlend.average}}
+					Strength:<br>
+						<span ng-repeat="tag in currentBlend.tags">{{tag}}</span>
+					</div>
+				</div>
+				<hr />
+				<div class="col-md-6">
+					<div class="row">
+						Average User Rating:
+						<br>
+			            <img src="images\beans_on-02.png" ng-repeat="num in ratingArray">
+			            <img src="images\beans_off.png" ng-repeat="num in ratingOtherArray">
 					</div>
 					<hr />
 					<div class="row">
