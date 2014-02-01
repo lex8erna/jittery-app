@@ -29,8 +29,6 @@ header .slogan, h2 {
 font-size: 24px;
 }
 textarea {
-	background-color: black;
-	color: white;
 }
 .main-wrapper {
 	margin: auto;
@@ -42,6 +40,7 @@ ul {
 	list-style-type: none;
 	font-size: 16px;
 	font-family: 'Architects Daughter', cursive;
+	padding-left: 0;
 }
 
 /**
@@ -82,4 +81,9 @@ footer .logo .slogan {
 .btnbg:hover {
 	color: #fff;
 	background-color:#c44b08;
+}
+
+.animate-hide > h4,
+.signup-form > label {
+	padding-left: 15px;
 }
