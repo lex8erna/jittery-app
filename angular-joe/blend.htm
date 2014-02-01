@@ -3,7 +3,7 @@
 <head>
 <title>Jittery Joe's Test</title>
 </head>
-<body>
+<body  ng-controller="ReviewListCtrl">
 <div class="main-wrapper"><br>
 
 	<div class="container row">
@@ -12,10 +12,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-4">
-				<h2>By Blend</h2>
-			</div>
+		<div class="col-md-4">
+			<h2>By Blend</h2>
 		</div>
 	</div>
 	<hr />
@@ -25,53 +23,57 @@
 		</div>
 	</div>
 	<hr />
-	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-6">
-				<ul>
-					<li>After Dinner</li>
-					<li>Bourque Newswatch</li>
-					<li>CN Tower Power</li>
-					<li>Connoisseur Estates</li>
-				</ul>
-			</div>
-			<div class="col-md-6">
-				<div class="row">
-					Strength Graph
+	<div class="blend-wrapper">
+		<h2>NAME{{current}}</h2>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<ul>
+						<li>After Dinner</li>
+						<li>Bourque Newswatch</li>
+						<li>CN Tower Power</li>
+						<li>Connoisseur Estates</li>
+					</ul>
 				</div>
-				<hr />
-				<div class="row">
-					User Ratings
+				<div class="col-md-6">
+					<div class="row">
+						Strength Graph
+					</div>
+					<hr />
+					<div class="row">
+						User Ratings
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-	<hr />
-		<div class="col-md-12">
-			<button type="submit" class="btn btn-default">Order Now!</button>
+		<div class="row">
+		<hr />
+			<div class="col-md-12">
+				<button type="submit" class="btn btn-default">Order Now!</button>
+			</div>
 		</div>
+		<hr />
+		<div class="review-form-wrapper row">
+	        <form name="ratingForm" ng-submit="addNewRatingFor(current)">
+	          <div class="review-rating form-group col-md-6">
+	            <label>Blend rating</label>
+	            <br />
+	            <label ng-repeat="num in [1,2,3,4,5]">
+	              <input ng-model="review.rating" type="radio" id="rating-{{num}}" name="review-rating-field" value="{{num}}">
+	              {{num}}
+	            </label>
+	          </div>
+	          <div class="review-comment form-group col-md-12">
+	            <label for="review-comment-field">Comment</label>
+	            <textarea ng-model="review.comment" rows="3" class="form-control" id="review-comment-field" name="review-comment-field"></textarea>
+	          </div>
+	          <div class="submit form-group col-md-12">
+	            <button type="submit" class="btn btn-default pull-right">Send</button>
+	          </div>
+	        </form>
+	      </div>
+	      
 	</div>
-	<hr />
-	<div class="review-form-wrapper row">
-        <form name="ratingForm" ng-submit="addNewRatingFor(current)">
-          <div class="review-rating form-group col-md-6">
-            <label>Blend rating</label>
-            <br />
-            <label ng-repeat="num in [1,2,3,4,5]">
-              <input ng-model="review.rating" type="radio" id="rating-{{num}}" name="review-rating-field" value="{{num}}">
-              {{num}}
-            </label>
-          </div>
-          <div class="review-comment form-group col-md-12">
-            <label for="review-comment-field">Comment</label>
-            <textarea ng-model="review.comment" rows="3" class="form-control" id="review-comment-field" name="review-comment-field"></textarea>
-          </div>
-          <div class="submit form-group col-md-12">
-            <button type="submit" class="btn btn-default pull-right">Send</button>
-          </div>
-        </form>
-      </div>
 </div>
 
 <!-- Bootstrap CDN --> 

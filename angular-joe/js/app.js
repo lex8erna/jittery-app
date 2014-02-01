@@ -34,7 +34,7 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
         // Creating a Blends object
         blends = new Blends(data, desc);
 
-        // Searching Example: 
+        // Searching Example:
         // Bourque Newswatch is the only thing that satisfies these listings
         // Remember to reset the listings once the search is complete
         blends.filterRegions(["Blue Mountain"]);
@@ -134,19 +134,24 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
   $scope.blendOrder;
 
   $scope.toggleShow = function (blend) {
+    setInnerHTML('intro','');
     $scope.detailMode = ! $scope.detailMode;
     $scope.current = blend;
+    $scope.currentBlend = blends.getBlend(blend);
   }
 
   $scope.switchView = function (type) {
+    setInnerHTML('intro','');
     $scope.detailMode = false;
     $scope.currentView = type;
     blends.reset();
     if (type == 'alpha'){
       $scope.blendOrder = blends.sortAlpha();
+      $scope.listingType = 'Listing by Blend Names (Alphabetical)';
     }
     else if (type == 'rating'){
       $scope.blendOrder = blends.sortRating();
+      $scope.listingType = 'Listing by Ratings (Popularity)';
     }
   }
 
