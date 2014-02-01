@@ -51,8 +51,15 @@ ul {
 }
 
 a :hover, a :active {
-	color: #c44b08;
-}
+
+display:block;
+font-weight:bold;
+color:#FFFFFF;
+background-color:#c44b08;
+width:120px;
+text-align:center;
+padding:4px;
+text-decoration:none;}
 
 footer .logo {
 	text-align: center;
