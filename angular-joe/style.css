@@ -62,6 +62,10 @@ text-align:center;
 padding:4px;
 text-decoration:none;}
 
+.btnbg {
+background-color:#c44b08;
+}
+
 footer .logo {
 	text-align: center;
 }
@@ -70,4 +74,12 @@ footer .logo img{
 }
 footer .logo .slogan {
 	font-size: 18px;
+}
+.btnbg  {
+	color: #fff;
+	background-color:#453524;
+}
+.btnbg:hover {
+	color: #fff;
+	background-color:#c44b08;
 }
