@@ -3,72 +3,87 @@
   <head>
     <title>Jittery Joe's Test</title>
   </head>
-  <body>
+  <body  ng-controller="ReviewListCtrl">
   <div class="main-wrapper"><br>
-
-  	<div class="container row">
-		<div class="col-md-12">
-			<div class="col-md-4"><img src="images/logo.png" width="50%" height="50%" alt=""/></div>
-		</div>
-	</div>
+        <header class="row">
+            <img src="images/logo.png"/>
+            <h1>Jittery Joe's</h1>
+            <div class="slogan">
+                Really good coffee.
+            </div>
+        </header>
 	<hr />
   	<div class="row">
   		<div class="col-md-12">
-  			<div class="col-md-4"><h4>By Blend</h4></div>
-  			<div class="col-md-4"><h4>By Strength</h4></div>
-  			<div class="col-md-4"><h4>By Region</h4></div>
+  			<div class="col-md-3"><h4 ng-click="switchView('alpha')">By Blend</h4></div>
+  			<div class="col-md-3"><h4 ng-click="switchView('rating')">By Rating</h4></div>
+  			<div class="col-md-3"><h4 ng-click="switchView('strength')">By Strength</h4></div>
+  			<div class="col-md-3"><h4 ng-click="switchView('region')">By Region</h4></div>
   		</div>
   	</div>
   	<hr />
-  	 <div class="row">
-  		<div class="col-md-12" style="margin-bottom:30px">
-	  		<div class="col-md-1 pull-right">A</div>
-	  		<div class="col-md-1 pull-right">P</div>
-	  		<div class="col-md-1 pull-right">C</div>
-  		</div>
-  	</div>
-  	 <div class="row">
-  		<div class="col-md-12">
-	  		<div class="col-md-3">
+  	<!-- when $scope.myValue is truthy (element is hidden) -->
+    <div ng-show="detailMode" class="animate-hide">
+    	<span ng-click="toggleShow(false)">Click to go Back<br></span>
+    {{current}}
+    </div>
+     
+    <!-- when $scope.myValue is falsy (element is visible) -->
+    <div ng-hide="detailMode" class="animate-hide">
+	  	<div class="row">
+	  		<div class="col-md-12">
 	  			<ul>
-	  				<li>After Dinner</li>
-	  				<li>Bourque Newswatch</li>
-	  				<li>CN Tower Power</li>
-	  				<li>Connoisseur Estates</li>
+		            <li class="col-md-3" ng-repeat="blend in blendOrder">
+		                <span ng-click="toggleShow(blend.name)">{{blend.name}} ({{blend.average}})</span>
+		            </li>
 	  			</ul>
 	  		</div>
-	  		<div class="col-md-3">
-	  			<ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-	  		<div class="col-md-3">
-	  			 <ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-	  		<div class="col-md-3">
-	  			 <ul>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  				<li>Blend 1</li>
-	  			</ul>
-	  		</div>
-  		</div>
+	  	</div>
   	</div>
 	<hr />
-<!--  	
-  	 <div class="row">
-  		<div class="col-md-4"><img src="http://placehold.it/350x150"></div>
-  		<div class="col-md-8"><img src="http://placehold.it/350x150&text=placeholder.it+rocks!"></div>
-  	</div>-->
+				<!-- Footer -->
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<footer class="row">
+					<!-- Logo -->
+					<div class="col-md-6">
+						<div class="logo">
+							<img src="images/logo.png" />
+							<div class="slogan">
+								Really good coffee.
+							</div>
+						</div>
+					</div>
+					<!-- Newsletter form -->
+					<div class="col-md-6">
+						<form class="signup-form form-horizontal" name="signupForm" ng-hide="signupSent">
+							<label for="signupForm">Subscribe to newsletter</label>
+							 <div class="user-name form-group">
+								<label class="col-md-2 control-label" for="user-name-field">Name</label>
+								 <div class="col-md-10">
+									<input class="form-control" type="text" id="user-name-field" name="user-name-field" ng-model="user.name" />
+								 </div>
+							 </div>
+							 <div class="user-email form-group">
+							  <label class="col-md-2 control-label" for="user-email-field">Email</label>
+							 <div class="col-md-10">
+							 <input class="form-control" type="text" id="user-email-field" name="user-email-field" ng-model="user.email" />
+							</div>
+						</div>
+						<div class="submit form-group">
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-success pull-right">Subscribe</button>
+							</div>
+						</div>
+					</form>
+<!-- Thank you message. -->
+				<div class="signup-sent" ng-show="signupSent">
+					<h5>Thanks for signing up!</h5>
+				</div>
+				</div>
+				</footer>
  </div>
 
   	 <!-- Bootstrap CDN -->
@@ -81,7 +96,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300|Architects+Daughter' rel='stylesheet' type='text/css'>
 
     <!-- Custom JS -->
+    <script src="js/data.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/blends.js"></script>
 
     <!-- Custom stylesheet -->
     <link rel="stylesheet" href="style.css" />
