@@ -1,0 +1,54 @@
+body {
+ color: #453524;
+ font-family: 'Roboto Slab', sans-serif;
+ margin: auto;
+/*
+   -webkit-transform: rotate(-30deg); 
+   -moz-transform: rotate(-30deg); 
+   -o-transform: rotate(-30deg);
+   transform: rotate(-30deg);
+   */
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Roboto Slab', sans-serif;
+ font-weight: bold;
+}
+header {
+text-align: center;
+}
+
+header img {
+width: 150px;
+}
+header h1 {
+font-size: 58px;
+}
+header .slogan {
+font-size: 24px;
+}
+textarea{
+	background-color: black;
+	color: white;
+}
+.main-wrapper {
+	margin: auto;
+	max-width: 800px;
+	width: 100%;
+}
+/**
+ * Ratings
+ */
+.review-item, .review-rating{
+	display: inline-block;
+}
+
+footer .logo {
+	text-align: center;
+}
+footer .logo img{
+	width: 50px;
+}
+footer .logo .slogan {
+	font-size: 18px;
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="jitteryApp">
+    <head>
+        <title>Jittery Joe's </title>
+    </head>
+    <body ng-controller="ReviewListCtrl">
+        <div class="main-wrapper">
+            <header class="row">
+                <img src="images/logo.png"/>
+                <h1>Jittery Joe's</h1>
+                <div class="slogan">
+                    Really good coffee.
+                </div>
+            </header>
+
+        <!-- Review form -->
+        <div class="review-form-wrapper row">
+            <form name="ratingForm" ng-submit="addNewRating()">
+                <div class="review-item form-group col-md-4">
+                    <label for="review-item-field">Choose a blend.</label>
+                    <select ng-model="review.item" name="review-item-field" id="review-item-field" class="review-item-field form-control">
+                        <option value="After Dinner">After Dinner</option>
+                        <option value="Bourque Newswatch">Bourque Newswatch</option>
+                        <option value="CN Tower of Power">CN Tower of Power</option>
+                        <option value="Connoisseur Estates">Connoisseur Estates</option>
+                        <option value="Columbian">Columbian</option>
+                        <option value="Dutch Trader">Dutch Trader</option>
+                        <option value="Fordnation Blend">Fordnation Blend</option>
+                        <option value="French Roast">French Roast</option>
+                        <option value="Hawaii Kona">Hawaii Kona</option>
+                        <option value="House Blend">House Blend</option>
+                        <option value="Italian Roast">Italian Roast</option>
+                        <option value="Lionel Roastie">Lionel Roastie</option>
+                        <option value="Mocca-Java">Mocca-Java</option>
+                        <option value="Reggae Blend">Reggae Blend</option>
+                        <option value="Ruth Roast">Ruth Roast</option>
+                        <option value="Toronto Blend">Toronto Blend</option>
+                        <option value="Tropic of Coffee">Tropic of Coffee</option>
+                        <option value="World Tour Blend">World Tour Blend</option>
+                    </select>
+                </div>
+                <div class="review-rating form-group col-md-8">
+                    <label>Blend Rating</label>
+                    <br/>
+                    <label ng-repeat="num in [1,2,3,4,5]">
+                        <input ng-model="review.rating" type="radio" id="rating-{{num}}" name="review-rating-field" value="{{num}}">
+                        {{num}}
+                    </label>
+                </div>
+
+                <div class="review-comment form-group col-md-12">
+                    <label for="review-comment-field">Comment </label>
+                    <textarea ng-model="review.comment" rows="3" class="form-control" id="review-comment-field" name="review-comment-field"></textarea>
+                </div>
+                <div class="submit form-group col-md-12">
+                    <button type="submit" class="btn btn-default pull-right">Send</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Example of Fields -->
+        <div class="row example-wrapper">
+            <div class="col-md-6 description" ng-repeat="example in exampleBlends">
+                <h3>Blend: {{example.name}}</h3>
+                {{example.description}}
+                <br/>
+                <br/>
+                The {{example.name}} blend has been rated {{example.number}} times, for a total of {{example.totalRatings}} points. The average score of this blend is {{example.average}}.
+                <h4>Regions</h4>
+                <span ng-repeat="region in example.regions">
+                    {{region}}
+                </span>
+                <h4>Tags</h4>
+                <span ng-repeat="tag in example.tags">
+                    {{tag}}
+                </span>
+            </div>
+        </div>
+
+        <!-- Example of Searching -->
+        <h3>Search Query:</h3>
+        <div class="row results-wrapper">
+            <div class="col-md-4 review" ng-repeat="blend in searchQuery">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                
+                <h4 class="review-item">{{blend.name}}</h4>
+                <div class="review-rating">{{blend.average}}</div>
+            </div>
+        </div>
+
+        <!-- List in alphabetical order-->
+        <h3>Blends by Alphabetical Order</h3>
+        <div class="row results-wrapper">
+            <div class="col-md-4 review" ng-repeat="blend in lexicalBlends">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                
+                <h4 class="review-item">{{blend.name}}</h4>
+                <div class="review-rating">{{blend.average}}</div>
+            </div>
+        </div>
+
+        <!-- List in order of popularity-->
+        <h3>Blends by Popularity</h3>
+        <div class="row results-wrapper">
+            <div class="col-md-4 review" ng-repeat="blend in popularBlends">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                
+                <h4 class="review-item">{{blend.name}}</h4>
+                <div class="review-rating">{{blend.average}}</div>
+            </div>
+        </div>
+
+        <!-- List reviews-->
+        <h3>Latest Reviews</h3>
+        <div class="row results-wrapper">
+            <div class="col-md-6 review" ng-repeat="review in reviews">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <h4 class="review-item">{{review.item}}</h4>
+                -
+                <div class="review-rating">{{review.rating}}/5</div>
+                <div class="review-comment">{{review.comment}}</div>
+                <div class="review-date pull-right">{{ (review.node_created * 1000 | date: 'MMM d - h:mma')}}</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="row">
+            <!-- Logo -->
+            <div class="col-md-6">
+                <div class="logo">
+                    <img src="images/logo.png"/>
+                    <div class="slogan">
+                        Really good coffee.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter form -->
+            <div class="col-md-6">
+                <form class="signup-form form-horizontal" name="signupForm" ng-submit="addNewSignup()" ng-hide="signupSent">
+                    <label for="signupForm"> Subscribe to newsletter</label>
+                    <div class="user-name form-group">
+                        <label class="col-md-2 control-label" for="user-name-field">Name</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" id="user-name-field" name="user-name-field" ng-model="user.name"/>
+                        </div>
+                    </div>
+                    <div class="user-email form-group">
+                        <label class="col-md-2 control-label" for="user-email-field">Email</label>
+                        <div class="col-md-10">
+                            <input clas="form-control" type="text" id="user-email-field" name="user-email-field" ng-model="user.email"/>
+                        </div>
+                    </div>
+                    <div class="submit form-group">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-default pull-right">Send</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Thank you message. -->
+                <div class="signup-sent" ng-show="signupSent">
+                    <h5>Thanks for signing up! </h5>
+                </div>
+            </div>
+        </footer>
+        <!-- Load things -->
+        <!-- Angular CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+
+        <!-- Google fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+
+        <!-- Custom JS -->
+        <script src="js/app.js"></script>
+        <script src="js/blends.js"></script>
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+    </body>
+</html>
+
