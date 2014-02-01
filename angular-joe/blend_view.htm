@@ -27,7 +27,7 @@
 
   	<!-- Detail Mode -->
     <div ng-show="detailMode" class="animate-hide">
-    	<a ng-click="toggleShow(false)">(Click to go back)<br></a><div class="blend-wrapper">
+    	<a class="back-thing" ng-click="toggleShow(false)">(Click to go back)<br></a><div class="blend-wrapper">
 		<h2>Blend: {{current}}</h2>
 		<div class="row">
 			<div class="col-md-12">
@@ -39,9 +39,7 @@
 					Strength:<br>
 						<span ng-repeat="tag in currentBlend.tags">{{tag}}</span>
 					</div>
-				</div>
-				<hr />
-				<div class="col-md-6">
+					<hr />
 					<div class="row">
 						Average User Rating:
 						<br>
@@ -81,6 +79,7 @@
 	          </div>
 	        </form>
       	</div>
+
 	</div>
     </div>
      
@@ -96,6 +95,18 @@
 	  			</ul>
 	  		</div>
 	  	</div>
+	  	<hr/>
+	  	<h3>Latest Reviews</h3>
+        <div class="row results-wrapper">
+            <div class="col-md-6 review" ng-repeat="review in reviews">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <h4 class="review-item">{{review.item}}</h4>
+                -
+                <div class="review-rating">{{review.rating}}/5</div>
+                <div class="review-comment">{{review.comment}}</div>
+                <div class="review-date pull-right">{{ (review.node_created * 1000 | date: 'MMM d - h:mma')}}</div>
+            </div>
+        </div>
   	</div>
 
 
