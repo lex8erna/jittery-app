@@ -5,7 +5,13 @@
   </head>
   <body  ng-controller="ReviewListCtrl">
   <div class="main-wrapper"><br>
-
+        <header class="row">
+            <img src="images/logo.png"/>
+            <h1>Jittery Joe's</h1>
+            <div class="slogan">
+                Really good coffee.
+            </div>
+        </header>
   	<div class="container row">
 		<div class="col-md-12">
 			<div class="col-md-4"><img src="images/logo.png" width="50%" height="50%" alt=""/></div>
@@ -40,11 +46,49 @@
 	  	</div>
   	</div>
 	<hr />
-<!--  	
-  	 <div class="row">
-  		<div class="col-md-4"><img src="http://placehold.it/350x150"></div>
-  		<div class="col-md-8"><img src="http://placehold.it/350x150&text=placeholder.it+rocks!"></div>
-  	</div>-->
+				<!-- Footer -->
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<footer class="row">
+					<!-- Logo -->
+					<div class="col-md-6">
+						<div class="logo">
+							<img src="images/logo.png" />
+							<div class="slogan">
+								Really good coffee.
+							</div>
+						</div>
+					</div>
+					<!-- Newsletter form -->
+					<div class="col-md-6">
+						<form class="signup-form form-horizontal" name="signupForm" ng-hide="signupSent">
+							<label for="signupForm">Subscribe to newsletter</label>
+							 <div class="user-name form-group">
+								<label class="col-md-2 control-label" for="user-name-field">Name</label>
+								 <div class="col-md-10">
+									<input class="form-control" type="text" id="user-name-field" name="user-name-field" ng-model="user.name" />
+								 </div>
+							 </div>
+							 <div class="user-email form-group">
+							  <label class="col-md-2 control-label" for="user-email-field">Email</label>
+							 <div class="col-md-10">
+							 <input class="form-control" type="text" id="user-email-field" name="user-email-field" ng-model="user.email" />
+							</div>
+						</div>
+						<div class="submit form-group">
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-success pull-right">Subscribe</button>
+							</div>
+						</div>
+					</form>
+<!-- Thank you message. -->
+				<div class="signup-sent" ng-show="signupSent">
+					<h5>Thanks for signing up!</h5>
+				</div>
+				</div>
+				</footer>
  </div>
 
   	 <!-- Bootstrap CDN -->
