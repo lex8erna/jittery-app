@@ -5,7 +5,6 @@ function setInnerHTML(eID, contents){
 }
 
 jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
-  $scope.detailMode = false;
   // Set our reviews object to be empty by default.
   $scope.reviews = [];
 
@@ -129,11 +128,26 @@ jitteryApp.controller('ReviewListCtrl', function ($scope, $http) {
   // Set our "signupSent" flag to false by default.
   $scope.signupSent = false;
   
-  $scope.current = "";
+  $scope.detailMode = false;
+  $scope.current;
+  $scope.currentView;
+  $scope.blendOrder;
 
   $scope.toggleShow = function (blend) {
     $scope.detailMode = ! $scope.detailMode;
     $scope.current = blend;
+  }
+
+  $scope.switchView = function (type) {
+    $scope.detailMode = false;
+    $scope.currentView = type;
+    blends.reset();
+    if (type == 'alpha'){
+      $scope.blendOrder = blends.sortAlpha();
+    }
+    else if (type == 'rating'){
+      $scope.blendOrder = blends.sortRating();
+    }
   }
 
   // Add a newsletter signup.
