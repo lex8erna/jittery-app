@@ -50,6 +50,10 @@ ul {
 	display: inline-block;
 }
 
+a :hover, a :active {
+	color: #c44b08;
+}
+
 footer .logo {
 	text-align: center;
 }
